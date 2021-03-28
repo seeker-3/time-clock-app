@@ -1,0 +1,27 @@
+:root {
+  height: 100%;
+}
+
+body {
+  background: #1f305e;
+  color: #c8c8c8;
+  /* height: 100%; */
+  text-align: center;
+}
+
+main {
+  margin: 0 auto;
+  margin-top: 30vh;
+  height: 100%;
+  font-size: 4rem;
+}
+
+button {
+  color: inherit;
+  background: #452c63;
+  padding: 2rem 4rem;
+  border: none;
+  outline: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
