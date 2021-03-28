@@ -57,6 +57,7 @@ startButton.onclick = () => {
   } else {
     startButton.innerText = 'start'
     clearInterval(interval)
+    interval = null
   }
 }
 
