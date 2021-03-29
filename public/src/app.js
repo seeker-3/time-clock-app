@@ -63,12 +63,6 @@ startButton.onclick = () => {
 
 floorButton.onclick = clock.floor
 
-// void (async () => {
-//   const registration = await navigator.serviceWorker.register(
-//     'service-worker.js'
-//   )
-//   console.log(registration)
-// })().catch(console.error)
 window.onload = async () => {
   // const registration =
   await navigator.serviceWorker.register('service-worker.js')
