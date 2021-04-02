@@ -1,4 +1,6 @@
-const cacheName = 'static'
+const useCache = true
+
+const cacheName = '0.0.4'
 const urlsToCache = [
   '/',
   'index.html',
@@ -9,7 +11,7 @@ const urlsToCache = [
   'icons/clock.png',
 ]
 
-const deleteCache = (cacheName = null) =>
+const clearCache = (cacheName = null) =>
   caches.keys().then(cacheNames =>
     Promise.all(
       cacheNames.map(name => {
@@ -20,7 +22,9 @@ const deleteCache = (cacheName = null) =>
 
 self.oninstall = e => {
   e.waitUntil(
-    caches.open(cacheName).then(async cache => {
+    clearCache().then(async () => {
+      if (!useCache) return
+      const cache = await caches.open(cacheName)
       await cache.addAll(urlsToCache)
       await self.skipWaiting()
     })
@@ -33,20 +37,21 @@ self.onfetch = e => {
     caches.match(request).then(async cachedResponse => {
       if (cachedResponse) return cachedResponse
 
-      const response = await fetch(request).catch(console.error)
+      return fetch(request).catch(console.error)
+      // const response =
 
-      if (!response || response.status !== '200' || response.type !== 'basic') {
-        return response
-      }
+      // if (!response || response.status !== '200' || response.type !== 'basic') {
+      //   return response
+      // }
 
-      const cache = await caches.open(cacheName)
-      await cache.put(response.clone())
+      // const cache = await caches.open(cacheName)
+      // await cache.put(response.clone())
 
-      return response
+      // return response
     })
   )
 }
 
-self.onactivate = e => {
-  e.waitUntil(deleteCache(cacheName))
-}
+// self.onactivate = e => {
+// e.waitUntil(clearCache(cacheName))
+// }
