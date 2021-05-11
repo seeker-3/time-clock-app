@@ -1,0 +1,21 @@
+{
+  "name": "Time Clock App",
+  "short_name": "TimeClock",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#1f305e",
+  "theme_color": "#452c63",
+  "description": "A simple app for tracking hours",
+  "icons": [
+    {
+      "src": "icons/clock.svg",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/clock.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

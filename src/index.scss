@@ -1,0 +1,36 @@
+@import '../node_modules/bootstrap/scss/functions';
+@import '../node_modules/bootstrap/scss/_variables';
+
+main {
+  margin: 1rem;
+}
+
+input {
+  @extend .form-control;
+}
+
+$text-color: #eee;
+
+$body-bg: $blue-700;
+$body-color: $text-color;
+
+button {
+  @extend .btn, .btn-success;
+  //   color: $text-color !important;
+
+  & + button {
+    margin-left: 1rem;
+  }
+  color: $text-color;
+}
+
+$theme-colors: map-merge(
+  $theme-colors,
+  (
+    'success': $red-400,
+  )
+);
+
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+@import '../node_modules/bootstrap/scss/variables';
+@import '../node_modules/bootstrap/scss/mixins';
