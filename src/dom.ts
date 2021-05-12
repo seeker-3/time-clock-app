@@ -7,10 +7,11 @@ const labels = JSON.parse(localStorage.getItem(labelAccessor) ?? '[]')
 const writeLabels = () =>
   localStorage.setItem(labelAccessor, JSON.stringify(labels))
 
-const main = document.querySelector('main') as HTMLDivElement
+const main = document.querySelector('#timer-container') as HTMLDivElement
 
 const mountDisplay = (label: string) => {
-  const container = document.createElement('div')
+  const outer = document.createElement('div')
+  outer.className = 'group'
 
   const startButton = document.createElement('button')
   const modButton = document.createElement('button')
@@ -20,12 +21,12 @@ const mountDisplay = (label: string) => {
   const displayNode = document.createElement('h1')
   const labelNode = document.createElement('h1')
 
-  container.appendChild(labelNode)
-  container.appendChild(displayNode)
-  container.appendChild(startButton)
-  container.appendChild(modButton)
-  container.appendChild(resetButton)
-  container.appendChild(deleteButton)
+  outer.appendChild(labelNode)
+  outer.appendChild(displayNode)
+  outer.appendChild(startButton)
+  outer.appendChild(modButton)
+  outer.appendChild(resetButton)
+  outer.appendChild(deleteButton)
 
   startButton.innerText = 'start'
   modButton.innerText = 'mod'
@@ -49,7 +50,7 @@ const mountDisplay = (label: string) => {
   }
 
   deleteButton.onclick = () => {
-    main.removeChild(container)
+    main.removeChild(outer)
     localStorage.removeItem(label)
     labels.splice(labels.indexOf(label), 1)
     writeLabels()
@@ -58,21 +59,24 @@ const mountDisplay = (label: string) => {
   modButton.onclick = display.mod
   resetButton.onclick = display.reset
 
-  main.appendChild(container)
+  main.appendChild(outer)
 }
 
 for (const label of labels) mountDisplay(label)
 
-const newButton = document.querySelector('#new-timer') as HTMLButtonElement
+const newButton = document.querySelector(
+  '#timer-input > button'
+) as HTMLButtonElement
 const newTimerLabel = document.querySelector(
-  '#new-timer-label'
+  '#timer-input > input'
 ) as HTMLInputElement
 
 if (newButton !== null && newTimerLabel !== null) {
   newButton.onclick = () => {
     const label = newTimerLabel.value
 
-    if (label === '') return
+    if (label === '' || labels.includes(label)) return
+    newTimerLabel.value = ''
     labels.push(label)
     writeLabels()
     localStorage.setItem(label, '0')

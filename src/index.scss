@@ -2,34 +2,53 @@
 @import '../node_modules/bootstrap/scss/_variables';
 
 main {
-  margin: 1rem;
+  @extend .container, .my-4;
 }
 
 input {
   @extend .form-control;
 }
 
-$text-color: #eee;
+$light: #ccc;
+$text-color: $light;
 
-$body-bg: $blue-700;
+$body-bg: #433;
 $body-color: $text-color;
 
 button {
-  @extend .btn, .btn-success;
-  //   color: $text-color !important;
-
-  & + button {
-    margin-left: 1rem;
-  }
-  color: $text-color;
+  @extend .btn, .btn-primary, .text-light;
 }
 
 $theme-colors: map-merge(
   $theme-colors,
   (
-    'success': $red-400,
+    'primary': #157,
+    'light': $light,
   )
 );
+
+#timer-input {
+  @extend .input-group;
+  input {
+    @extend .form-control, .bg-light;
+  }
+  button {
+    @extend .input-group-text, .btn-primary;
+  }
+}
+
+#timer-container {
+  @extend .d-flex, .flex-row, .flex-wrap;
+  > div {
+    @extend .m-4;
+  }
+  button {
+    width: 6rem;
+    & + button {
+      margin-left: 1rem;
+    }
+  }
+}
 
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 @import '../node_modules/bootstrap/scss/variables';
