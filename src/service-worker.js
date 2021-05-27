@@ -1,6 +1,6 @@
 const useCache = true
 
-const cacheName = '0.0.6'
+const cacheName = '0.0.7'
 const urlsToCache = [
   '/',
   'index.html',

@@ -3,8 +3,8 @@
   "short_name": "TimeClock",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#1f305e",
-  "theme_color": "#452c63",
+  "background_color": "#111120",
+  "theme_color": "#579",
   "description": "A simple app for tracking hours",
   "icons": [
     {

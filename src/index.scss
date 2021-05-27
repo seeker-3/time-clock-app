@@ -9,28 +9,27 @@ input {
   @extend .form-control;
 }
 
-$light: #ccc;
-$text-color: $light;
+$body-bg: #335;
+$body-bg: #111120;
 
-$body-bg: #433;
-$body-color: $text-color;
+$body-color: #bbd;
 
 button {
-  @extend .btn, .btn-primary, .text-light;
+  @extend .btn, .btn-primary, .text-secondary;
 }
 
 $theme-colors: map-merge(
   $theme-colors,
   (
-    'primary': #157,
-    'light': $light,
+    'primary': #579,
+    'secondary': #cce,
   )
 );
 
 #timer-input {
   @extend .input-group;
   input {
-    @extend .form-control, .bg-light;
+    @extend .form-control, .bg-secondary;
   }
   button {
     @extend .input-group-text, .btn-primary;
