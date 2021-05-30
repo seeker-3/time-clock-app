@@ -10,8 +10,9 @@ const writeLabels = () =>
 const main = document.querySelector('#timer-container') as HTMLDivElement
 
 const mountDisplay = (label: string) => {
-  const outer = document.createElement('div')
-  outer.className = 'group'
+  const div = document.createElement('div')
+  const buttonGroup = document.createElement('div')
+  buttonGroup.className = 'button-group'
 
   const startButton = document.createElement('button')
   const modButton = document.createElement('button')
@@ -21,12 +22,14 @@ const mountDisplay = (label: string) => {
   const displayNode = document.createElement('h1')
   const labelNode = document.createElement('h1')
 
-  outer.appendChild(labelNode)
-  outer.appendChild(displayNode)
-  outer.appendChild(startButton)
-  outer.appendChild(modButton)
-  outer.appendChild(resetButton)
-  outer.appendChild(deleteButton)
+  div.appendChild(labelNode)
+  div.appendChild(displayNode)
+  div.appendChild(buttonGroup)
+
+  buttonGroup.appendChild(startButton)
+  buttonGroup.appendChild(modButton)
+  buttonGroup.appendChild(resetButton)
+  buttonGroup.appendChild(deleteButton)
 
   startButton.innerText = 'start'
   modButton.innerText = 'mod'
@@ -36,7 +39,7 @@ const mountDisplay = (label: string) => {
   labelNode.innerText = label
   const display = new Display(displayNode, label)
 
-  let interval: NodeJS.Timeout | null
+  let interval: number | null
   startButton.onclick = () => {
     if (!interval) {
       startButton.textContent = 'stop'
@@ -50,7 +53,7 @@ const mountDisplay = (label: string) => {
   }
 
   deleteButton.onclick = () => {
-    main.removeChild(outer)
+    main.removeChild(div)
     localStorage.removeItem(label)
     labels.splice(labels.indexOf(label), 1)
     writeLabels()
@@ -59,7 +62,7 @@ const mountDisplay = (label: string) => {
   modButton.onclick = display.mod
   resetButton.onclick = display.reset
 
-  main.appendChild(outer)
+  main.appendChild(div)
 }
 
 for (const label of labels) mountDisplay(label)

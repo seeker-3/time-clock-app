@@ -27,7 +27,7 @@ $theme-colors: map-merge(
 );
 
 #timer-input {
-  @extend .input-group;
+  @extend .input-group, .my-4;
   input {
     @extend .form-control, .bg-secondary;
   }
@@ -37,16 +37,17 @@ $theme-colors: map-merge(
 }
 
 #timer-container {
-  @extend .d-flex, .flex-row, .flex-wrap;
-  > div {
-    @extend .m-4;
-  }
+  @extend .d-flex, .flex-row, .flex-wrap, .my-4;
+  gap: 4rem;
+  // justify-content: space-between;
   button {
-    width: 6rem;
-    & + button {
-      margin-left: 1rem;
-    }
+    width: 4.5rem;
   }
+}
+
+.button-group {
+  @extend .d-flex, .flex-row, .flex-wrap;
+  gap: 1rem;
 }
 
 @import '../node_modules/bootstrap/scss/bootstrap.scss';

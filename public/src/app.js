@@ -79,6 +79,8 @@ window.onload = async () => {
     'service-worker.js'
   )
 
+  console.log(registration)
+
   registration.onupdatefound = () => {
     location.reload()
     // if (window.confirm('site has been updated, confirm to reload'));

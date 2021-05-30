@@ -1,3 +1,9 @@
+// @ts-check
+/// <reference lib="ES2015" />
+/// <reference lib="webworker" />
+
+declare var self: ServiceWorkerGlobalScope
+
 const useCache = true
 
 const cacheName = '0.0.7'
@@ -37,8 +43,7 @@ self.onfetch = e => {
     caches.match(request).then(async cachedResponse => {
       if (cachedResponse) return cachedResponse
 
-      return fetch(request).catch(console.error)
-      // const response =
+      return fetch(request)
 
       // if (!response || response.status !== '200' || response.type !== 'basic') {
       //   return response
@@ -52,6 +57,9 @@ self.onfetch = e => {
   )
 }
 
-// self.onactivate = e => {
-// e.waitUntil(clearCache(cacheName))
-// }
+export default null
+
+self.onactivate = e => {
+  console.log('hey')
+  // e.waitUntil(clearCache(cacheName))
+}

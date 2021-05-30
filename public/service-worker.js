@@ -1,6 +1,6 @@
 const useCache = true
 
-const cacheName = '0.0.4'
+const cacheName = '0.0.5'
 const urlsToCache = [
   '/',
   'index.html',
@@ -21,6 +21,7 @@ const clearCache = (cacheName = null) =>
   )
 
 self.oninstall = e => {
+  console.log('hey')
   e.waitUntil(
     clearCache().then(async () => {
       if (!useCache) return
