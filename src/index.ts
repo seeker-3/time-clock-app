@@ -2,7 +2,7 @@ import './dom'
 
 window.onload = () =>
   navigator.serviceWorker
-    .register(new URL('./service-worker.ts', import.meta.url))
+    .register(new URL('service-worker.ts', import.meta.url))
     .then(
       registration => {
         registration.onupdatefound = location.reload
@@ -11,3 +11,5 @@ window.onload = () =>
     )
 
 // navigator.serviceWorker.addEventListener('controllerchange', () => {})
+
+export default null

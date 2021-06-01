@@ -79,12 +79,8 @@ window.onload = async () => {
     'service-worker.js'
   )
 
-  console.log(registration)
-
-  registration.onupdatefound = () => {
-    location.reload()
-    // if (window.confirm('site has been updated, confirm to reload'));
-  }
+  registration.onupdatefound = () => location.reload
+  // if (window.confirm('site has been updated, confirm to reload'));
 
   // navigator.serviceWorker.addEventListener('controllerchange', () => {})
 }
